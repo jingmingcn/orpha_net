@@ -15,7 +15,6 @@ class OrphaSpider(scrapy.Spider):
         with open('OrphaCode.csv', 'r') as file:
             lines = file.readlines()
             for orphacode in lines[1:]:
-                print(orphacode)
                 yield scrapy.Request(url=base_url+orphacode+"?name="+orphacode+"&mode=orpha",callback=self.parse)
 
     def parse(self, response):
