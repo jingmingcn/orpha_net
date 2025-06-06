@@ -8,7 +8,7 @@ class OrphaSpider(scrapy.Spider):
    
     # start_urls = ["https://orpha.com"]
 
-    async def start(self):
+    def start_request(self):
         #https://www.orpha.net/en/disease/detail/90636?name=90636&mode=orpha
         base_url = "https://www.orpha.net/en/disease/detail/"
 
