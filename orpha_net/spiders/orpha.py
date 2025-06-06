@@ -8,17 +8,16 @@ class OrphaSpider(scrapy.Spider):
    
     # start_urls = ["https://orpha.com"]
 
-    def start_request(self):
+    async def start(self):
         #https://www.orpha.net/en/disease/detail/90636?name=90636&mode=orpha
         base_url = "https://www.orpha.net/en/disease/detail/"
 
         with open('OrphaCode.csv', 'r') as file:
             lines = file.readlines()
-
             for orphacode in lines[1:]:
                 print(orphacode)
                 yield scrapy.Request(url=base_url+orphacode+"?name="+orphacode+"&mode=orpha",callback=self.parse)
-                
+
     def parse(self, response):
 
         url = response.url
